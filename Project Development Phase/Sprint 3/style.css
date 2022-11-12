@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.5),rgba(0,0,0,0.9)),url("Independent-Water-analysis.jpg") center center;
+    background-size:cover;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+   
+}
+
+#sendMessageButton
+{
+    font-size:18px;
+    font-family: 'Josefin Sans', sans-serif;
+    color:#fff;
+    background:transparent;
+    border:3px solid #fff;
+    padding:8px 40px;
+    border-radius:80px;
+    font-weight:bold;
+    margin:2vh 10px;
+    transition:0.3s ease-in-out;
+}
+#sendMessageButton:hover
+{
+    cursor:pointer;
+    color:rgb(0, 0, 0);
+    background:#ffffff;
+    border:3px solid #ffffff;
+}
+
+main div.column input {
+    display: block;
+    position: relative;
+    margin: 24px 26px;
+    left: 60vw;
+    border-radius: 35px;
+    width: 250px;
+    height: 30px;
+}
+
+input[type="text"] {
+    text-align: center;
+}
+
+main div.last input {
+    width: 256px;;
+    background: rgb(5, 3, 68);
+    background: linear-gradient(90deg, rgba(5, 3, 68, 1) 0%, rgba(0, 12, 36, 1) 0%, rgba(39, 9, 121, 1) 0%, rgba(38, 8, 114, 1) 0%, rgba(94, 0, 255, 1) 45%, rgba(188, 0, 255, 1) 84%);
+    font-weight: 600;
+}
+
+main div.last input:hover {
+    background: rgb(188, 0, 255);
+    background: linear-gradient(90deg, rgba(188, 0, 255, 1) 23%, rgba(94, 0, 255, 1) 63%, rgba(22, 9, 121, 1) 100%, rgba(5, 3, 68, 1) 100%, rgba(0, 12, 36, 1) 100%, rgba(38, 8, 114, 1) 100%);
+}
