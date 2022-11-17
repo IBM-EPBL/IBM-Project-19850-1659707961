@@ -1,36 +1,39 @@
-import numpy as np
-from flask import Flask,render_template,request
+from flask import Flask, request, render_template
 import pickle
-app= Flask(__name__)
-model=pickle.load(open(r'C:\Users\senth\Desktop\Sprint 4\wqi.pkl','rb'))
-@app.route('/')
-def home() :
-  return render_template("predict.html")
-@app.route('/login',methods = ['POST'])
-def login() :
-  year = request.form["year"]
-  do = request.form["do"]
-  ph = request.form["ph"]
-  co = request.form["co"]
-  bod = request.form["bod"]
-  tc = request.form["tc"]
-  na = request.form["na"]
-  total = [[float(do),float(ph),float(co),float(bod),float(na),float(tc)]]
-  y_pred = model.predict(total)
-  y_pred = y_pred[[0]]
-  if(y_pred >= 95 and y_pred<=100):
-    return render_template("predict.html",showcase = 'Excellent, The Predicted Value Is'+ str(y_pred))
-  elif(y_pred >= 89 and y_pred<=94):
-    return render_template("predict.html",showcase = 'Very Good, The Predicted Value Is'+ str(y_pred))
-  elif(y_pred >= 80 and y_pred<=88):
-    return render_template("predict.html",showcase = 'Good, The Predicted Value Is'+ str(y_pred))
-  elif(y_pred >= 65 and y_pred<=79):
-    return render_template("predict.html",showcase = 'Fair, The Predicted Value Is'+ str(y_pred))
-  elif(y_pred >= 45 and y_pred<=64):
-    return render_template("predict.html",showcase = 'Marginal, The Predicted Value Is'+ str(y_pred))
-  else:
-    return render_template("predict.html",showcase = 'Poor, The Predicted Value Is'+ str(y_pred))
+import pandas as pd
+import numpy as np
+import joblib
+scaler = joblib.load("my_scaler.save")
+app = Flask(__name__)
+model=pickle.load(open('model.pkl','rb'))
+
+@app.route("/home")
+@app.route("/")
+def hello():
+    return render_template("predict.html")
+
+@app.route("/predict", methods = ["GET", "POST"])
+def predict():
+    if request.method == "POST":
+        input_features = [float(x) for x in request.form.values()]
+        features_value = [np.array(input_features)]
+
+        feature_names = ["ph", "Hardness" , "Solids", "Chloramines", "Sulfate",
+                         "Conductivity", "Organic_carbon","Trihalomethanes", "Turbidity"]
+
+        df = pd.DataFrame(features_value, columns = feature_names)
+        df = scaler.transform(df)
+        output = model.predict(df)
+
+        if output[0] == 1:           
+            prediction = "safe"
+        else:
+            prediction = "not safe"
 
 
-if __name__ == '__main__':
-     app.run(debug = False,port=5000)
+        return render_template('predict.html', prediction_text= "water is {} for human consumption ".format(prediction))
+
+        
+
+if __name__ == "__main__":
+    app.run(debug=True)
