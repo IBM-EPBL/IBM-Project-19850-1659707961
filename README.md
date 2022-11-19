@@ -21,6 +21,7 @@ Domain - Applied Data Science
 │   ├── Team Member 1
 │   ├── Team Member 2
 │   └── Team Member 3
+|
 ├── Final Deliverables
 │   ├── Static
 │   ├── templates
@@ -31,11 +32,13 @@ Domain - Applied Data Science
 │   ├── model.pkl
 │   ├── requirements.txt
 │   └── water_potability.csv
+|
 ├── Pre-Development
 │   ├── Ideation Phase
 │   ├── Project Design Phase -1
 │   ├── Project Design Phase -2
 │   └── Project Planning
+|
 ├── Project Development Phase
 │   ├── sprint 1
 │   ├── sprint 2
@@ -44,6 +47,7 @@ Domain - Applied Data Science
 │   ├── TestCase Report Template.pdf
 │   ├── TestCase Report Template.xls
 │   └── UAT Report Template.pdf
+|
 ├── Screenshots
 │   ├── Deployment URL Link.png
 │   ├── Home Page.png
@@ -53,4 +57,5 @@ Domain - Applied Data Science
 │   ├── Test Case - 1.png
 │   ├── Test Case - 2.png
 │   └── Watson Studio.png
+|
 └── README.md
